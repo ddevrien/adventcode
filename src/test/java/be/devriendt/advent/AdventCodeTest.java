@@ -41,6 +41,27 @@ public class AdventCodeTest {
     }
 
     @Test
+    public void day2_surfaceArea() throws Exception {
+        Assert.assertEquals(58, Day2SurfaceArea.dimensionsToSurfaceArea("2x3x4"));
+        Assert.assertEquals(43, Day2SurfaceArea.dimensionsToSurfaceArea("1x1x10"));
+
+        long time = System.currentTimeMillis();
+        int solution = Day2SurfaceArea.shoppingListDimensionsToSurfaceArea("/day2_shoppinglist.txt");
+        Assert.assertEquals(1586300, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 2: " + solution + " [" + time + "ms]");
+
+        Assert.assertEquals(34, Day2SurfaceArea.dimensionsToRibbonLength("2x3x4"));
+        Assert.assertEquals(14, Day2SurfaceArea.dimensionsToRibbonLength("1x1x10"));
+
+        time = System.currentTimeMillis();
+        solution = Day2SurfaceArea.shoppingListDimensionsToRibbonLength("/day2_shoppinglist.txt");
+        Assert.assertEquals(3737498, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 2 extra: " + solution + " [" + time + "ms]");
+    }
+
+    @Test
     public void day4_md5() throws Exception {
         Assert.assertEquals(609043, Day4md5.findLowestPossibleSolution("abcdef", 5));
         Assert.assertEquals(1048970, Day4md5.findLowestPossibleSolution("pqrstuv", 5));
