@@ -103,4 +103,30 @@ public class AdventCodeTest {
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 4 extra: " + solution + " [" + DigestUtils.md5Hex("bgvyzdsv" + solution) + "] [" + time + "ms]");
     }
+
+    @Test
+    public void day5_stringPattern() throws Exception {
+        Assert.assertTrue(Day5StringPattern.isNiceString("ugknbfddgicrmopn"));
+        Assert.assertTrue(Day5StringPattern.isNiceString("aaa"));
+        Assert.assertFalse(Day5StringPattern.isNiceString("jchzalrnumimnmhp"));
+        Assert.assertFalse(Day5StringPattern.isNiceString("haegwjzuvuyypxyu"));
+        Assert.assertFalse(Day5StringPattern.isNiceString("dvszwmarrgswjxmb"));
+
+        long time = System.currentTimeMillis();
+        int solution = Day5StringPattern.countNumberOfNiceStrings("/day5_teststrings.txt");
+        Assert.assertEquals(236, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 5: " + solution + " [" + time + "ms]");
+
+        Assert.assertTrue(Day5StringPattern.isSuperNiceString("qjhvhtzxzqqjkmpb"));
+        Assert.assertTrue(Day5StringPattern.isSuperNiceString("xxyxx"));
+        Assert.assertFalse(Day5StringPattern.isSuperNiceString("uurcxstgmygtbstg"));
+        Assert.assertFalse(Day5StringPattern.isSuperNiceString("ieodomkazucvgmuy"));
+
+        time = System.currentTimeMillis();
+        solution = Day5StringPattern.countNumberOfSuperNiceStrings("/day5_teststrings.txt");
+        Assert.assertEquals(51, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 5 extra: " + solution + " [" + time + "ms]");
+    }
 }
