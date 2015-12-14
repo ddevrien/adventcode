@@ -4,6 +4,8 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Collections;
+
 /**
  * Created by Dennis on 5/12/2015.
  */
@@ -128,5 +130,29 @@ public class AdventCodeTest {
         Assert.assertEquals(51, solution);
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 5 extra: " + solution + " [" + time + "ms]");
+    }
+
+    @Test
+    public void day6_matrices() throws Exception {
+        int[][] stateMatrix = new int[1000][1000];
+
+        Assert.assertEquals(1_000_000, Day6Matrices.matrixToNumberOfLightsOn(Collections.singletonList("turn on 0,0 through 999,999"), stateMatrix));
+        Assert.assertEquals(1_000_000 - 1000, Day6Matrices.matrixToNumberOfLightsOn(Collections.singletonList("toggle 0,0 through 999,0"), stateMatrix));
+        Assert.assertEquals(1_000_000 - 1000 - 4, Day6Matrices.matrixToNumberOfLightsOn(Collections.singletonList("turn off 499,499 through 500,500"), stateMatrix));
+
+        long time = System.currentTimeMillis();
+        int solution = Day6Matrices.getNumberOfLightsOnFromInstructions("/day6_instructions.txt");
+        Assert.assertEquals(569_999, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 6: " + solution + " [" + time + "ms]");
+
+        Assert.assertEquals(1, Day6Matrices.matrixToLightsBrightness(Collections.singletonList("turn on 0,0 through 0,0"), new int[1000][1000]));
+        Assert.assertEquals(2_000_000, Day6Matrices.matrixToLightsBrightness(Collections.singletonList("toggle 0,0 through 999,999"), new int[1000][1000]));
+
+        time = System.currentTimeMillis();
+        solution = Day6Matrices.getLightBrightnessFromInstructions("/day6_instructions.txt");
+        Assert.assertEquals(17_836_115, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 6 extra: " + solution + " [" + time + "ms]");
     }
 }
