@@ -4,7 +4,11 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by Dennis on 5/12/2015.
@@ -155,4 +159,46 @@ public class AdventCodeTest {
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 6 extra: " + solution + " [" + time + "ms]");
     }
+
+    @Test
+    public void day7_computer() throws Exception {
+        List<String> instructions = new ArrayList<>();
+        instructions.add("123 -> x");
+        instructions.add("456 -> y");
+        instructions.add("x AND y -> d");
+        instructions.add("x OR y -> e");
+        instructions.add("x LSHIFT 2 -> f");
+        instructions.add("y RSHIFT 2 -> g");
+        instructions.add("NOT x -> h");
+        instructions.add("NOT y -> i");
+
+        Assert.assertEquals(123, Day7Computer.instructionsToWireSignal("x", instructions));
+        Assert.assertEquals(456, Day7Computer.instructionsToWireSignal("y", instructions));
+        Assert.assertEquals(72, Day7Computer.instructionsToWireSignal("d", instructions));
+        Assert.assertEquals(507, Day7Computer.instructionsToWireSignal("e", instructions));
+        Assert.assertEquals(492, Day7Computer.instructionsToWireSignal("f", instructions));
+        Assert.assertEquals(114, Day7Computer.instructionsToWireSignal("g", instructions));
+        Assert.assertEquals(65412, Day7Computer.instructionsToWireSignal("h", instructions));
+        Assert.assertEquals(65079, Day7Computer.instructionsToWireSignal("i", instructions));
+
+        long time = System.currentTimeMillis();
+        int solution = Day7Computer.getWireSignalFromInstructions("a", "/day7_instructions.txt");
+        Assert.assertEquals(956, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 7: " + solution + " [" + time + "ms]");
+
+        instructions = Files.readAllLines(Paths.get(Day7Computer.class.getResource("/day7_instructions.txt").toURI()));
+        for (int i = 0; i < instructions.size(); i++) {
+            if (instructions.get(i).endsWith(" -> b")) {
+                instructions.set(i, "956 -> b");
+            }
+        }
+
+        time = System.currentTimeMillis();
+        solution = Day7Computer.instructionsToWireSignal("a", instructions);
+        Assert.assertEquals(40149, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 7 extra: " + solution + " [" + time + "ms]");
+    }
+
 }
