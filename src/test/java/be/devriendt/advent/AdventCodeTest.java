@@ -201,4 +201,36 @@ public class AdventCodeTest {
         System.out.println("DAY 7 extra: " + solution + " [" + time + "ms]");
     }
 
+    @Test
+    public void day8_stringEscape() throws Exception {
+        List<String> strings = new ArrayList<>();
+        strings.add("\"\"");
+        strings.add("\"abc\"");
+        strings.add("\"aaa\\\"aaa\"");
+        strings.add("\"\\x27\"");
+
+        Assert.assertEquals(2, Day8StringEscape.escapeToUnescapeCharacterDiff(strings.get(0)));
+        Assert.assertEquals(2, Day8StringEscape.escapeToUnescapeCharacterDiff(strings.get(1)));
+        Assert.assertEquals(3, Day8StringEscape.escapeToUnescapeCharacterDiff(strings.get(2)));
+        Assert.assertEquals(5, Day8StringEscape.escapeToUnescapeCharacterDiff(strings.get(3)));
+        Assert.assertEquals(12, Day8StringEscape.escapeToUnescapeCharacterDiff(strings));
+
+        long time = System.currentTimeMillis();
+        int solution = Day8StringEscape.getEscapeToUnescapeCharacterDiff("/day8_teststrings.txt");
+        Assert.assertEquals(1371, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 8: " + solution + " [" + time + "ms]");
+
+        Assert.assertEquals(4, Day8StringEscape.unescapeToEscapeCharacterDiff(strings.get(0)));
+        Assert.assertEquals(4, Day8StringEscape.unescapeToEscapeCharacterDiff(strings.get(1)));
+        Assert.assertEquals(6, Day8StringEscape.unescapeToEscapeCharacterDiff(strings.get(2)));
+        Assert.assertEquals(5, Day8StringEscape.unescapeToEscapeCharacterDiff(strings.get(3)));
+        Assert.assertEquals(19, Day8StringEscape.unescapeToEscapeCharacterDiff(strings));
+
+        time = System.currentTimeMillis();
+        solution = Day8StringEscape.getUnescapeToEscapeCharacterDiff("/day8_teststrings.txt");
+        Assert.assertEquals(2117, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 8 extra: " + solution + " [" + time + "ms]");
+    }
 }
