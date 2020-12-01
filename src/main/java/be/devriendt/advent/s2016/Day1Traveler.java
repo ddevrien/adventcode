@@ -1,24 +1,70 @@
-package be.devriendt.advent;
+package be.devriendt.advent.s2016;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
+import static be.devriendt.advent.s2016.Day1Traveler.FacingDirection.*;
+import static be.devriendt.advent.s2016.Day1Traveler.WalkingDirection.LEFT;
+import static be.devriendt.advent.s2016.Day1Traveler.WalkingDirection.RIGHT;
+
 /**
- * Created by Dennis on 24/01/2016.
+ * Created by Dennis on 2/12/2016.
  */
-public class Day8StringEscape {
+public class Day1Traveler {
+
+    enum FacingDirection {
+        NORTH, EAST, SOUTH, WEST
+    }
+
+    enum WalkingDirection {
+        LEFT, RIGHT
+    }
+
+    public static int getDistanceFromStartingLocation(String moveInstructions) {
+        String[] instructions = moveInstructions.replace(" ", "").split(",");
+        FacingDirection facingDirection = NORTH;
+        Point location = new Point(0, 0);
+
+        for (String instruction: instructions) {
+            int distance = Integer.parseInt(instruction.substring(1, instruction.length()));
+            WalkingDirection walkingDirection = instruction.charAt(0) == 'L' ? LEFT : RIGHT;
+            facingDirection = getNewFacingDirection(facingDirection, walkingDirection);
+            location = move(location, facingDirection, distance);
+        }
+
+        return 0;
+    }
+
+    private static Point move(Point location, FacingDirection facingDirection, int distance) {
+        switch (facingDirection) {
+            case NORTH: return new Point(location.x, location.y);
+        }
+        return null;
+    }
+
+    private static FacingDirection getNewFacingDirection(FacingDirection facingDirection, WalkingDirection walkingDirection) {
+        switch (facingDirection) {
+            case NORTH: return walkingDirection == LEFT ? WEST : EAST;
+            case EAST: return walkingDirection == LEFT ? NORTH : SOUTH;
+            case SOUTH: return walkingDirection == LEFT ? EAST : WEST;
+            case WEST: return walkingDirection == LEFT ? SOUTH : NORTH;
+            default:
+                throw new IllegalArgumentException("what");
+        }
+    }
 
     public static int getEscapeToUnescapeCharacterDiff(String resourcePath) throws URISyntaxException, IOException {
         return escapeToUnescapeCharacterDiff(
-                Files.readAllLines(Paths.get(Day8StringEscape.class.getResource(resourcePath).toURI())));
+                Files.readAllLines(Paths.get(Day1Traveler.class.getResource(resourcePath).toURI())));
     }
 
     public static int getUnescapeToEscapeCharacterDiff(String resourcePath) throws URISyntaxException, IOException {
         return unescapeToEscapeCharacterDiff(
-                Files.readAllLines(Paths.get(Day8StringEscape.class.getResource(resourcePath).toURI())));
+                Files.readAllLines(Paths.get(Day1Traveler.class.getResource(resourcePath).toURI())));
     }
 
     public static int escapeToUnescapeCharacterDiff(List<String> strings) {

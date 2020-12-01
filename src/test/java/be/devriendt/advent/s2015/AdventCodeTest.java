@@ -1,4 +1,4 @@
-package be.devriendt.advent;
+package be.devriendt.advent.s2015;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.Assert;
@@ -52,7 +52,7 @@ public class AdventCodeTest {
         Assert.assertEquals(43, Day2SurfaceArea.dimensionsToSurfaceArea("1x1x10"));
 
         long time = System.currentTimeMillis();
-        int solution = Day2SurfaceArea.shoppingListDimensionsToSurfaceArea("/day2_shoppinglist.txt");
+        int solution = Day2SurfaceArea.shoppingListDimensionsToSurfaceArea("/s2015/day2_shoppinglist.txt");
         Assert.assertEquals(1586300, solution);
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 2: " + solution + " [" + time + "ms]");
@@ -61,7 +61,7 @@ public class AdventCodeTest {
         Assert.assertEquals(14, Day2SurfaceArea.dimensionsToRibbonLength("1x1x10"));
 
         time = System.currentTimeMillis();
-        solution = Day2SurfaceArea.shoppingListDimensionsToRibbonLength("/day2_shoppinglist.txt");
+        solution = Day2SurfaceArea.shoppingListDimensionsToRibbonLength("/s2015/day2_shoppinglist.txt");
         Assert.assertEquals(3737498, solution);
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 2 extra: " + solution + " [" + time + "ms]");
@@ -119,7 +119,7 @@ public class AdventCodeTest {
         Assert.assertFalse(Day5StringPattern.isNiceString("dvszwmarrgswjxmb"));
 
         long time = System.currentTimeMillis();
-        int solution = Day5StringPattern.countNumberOfNiceStrings("/day5_teststrings.txt");
+        int solution = Day5StringPattern.countNumberOfNiceStrings("/s2015/day5_teststrings.txt");
         Assert.assertEquals(236, solution);
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 5: " + solution + " [" + time + "ms]");
@@ -130,7 +130,7 @@ public class AdventCodeTest {
         Assert.assertFalse(Day5StringPattern.isSuperNiceString("ieodomkazucvgmuy"));
 
         time = System.currentTimeMillis();
-        solution = Day5StringPattern.countNumberOfSuperNiceStrings("/day5_teststrings.txt");
+        solution = Day5StringPattern.countNumberOfSuperNiceStrings("/s2015/day5_teststrings.txt");
         Assert.assertEquals(51, solution);
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 5 extra: " + solution + " [" + time + "ms]");
@@ -145,7 +145,7 @@ public class AdventCodeTest {
         Assert.assertEquals(1_000_000 - 1000 - 4, Day6Matrices.matrixToNumberOfLightsOn(Collections.singletonList("turn off 499,499 through 500,500"), stateMatrix));
 
         long time = System.currentTimeMillis();
-        int solution = Day6Matrices.getNumberOfLightsOnFromInstructions("/day6_instructions.txt");
+        int solution = Day6Matrices.getNumberOfLightsOnFromInstructions("/s2015/day6_instructions.txt");
         Assert.assertEquals(569_999, solution);
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 6: " + solution + " [" + time + "ms]");
@@ -154,7 +154,7 @@ public class AdventCodeTest {
         Assert.assertEquals(2_000_000, Day6Matrices.matrixToLightsBrightness(Collections.singletonList("toggle 0,0 through 999,999"), new int[1000][1000]));
 
         time = System.currentTimeMillis();
-        solution = Day6Matrices.getLightBrightnessFromInstructions("/day6_instructions.txt");
+        solution = Day6Matrices.getLightBrightnessFromInstructions("/s2015/day6_instructions.txt");
         Assert.assertEquals(17_836_115, solution);
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 6 extra: " + solution + " [" + time + "ms]");
@@ -182,12 +182,12 @@ public class AdventCodeTest {
         Assert.assertEquals(65079, Day7Computer.instructionsToWireSignal("i", instructions));
 
         long time = System.currentTimeMillis();
-        int solution = Day7Computer.getWireSignalFromInstructions("a", "/day7_instructions.txt");
+        int solution = Day7Computer.getWireSignalFromInstructions("a", "/s2015/day7_instructions.txt");
         Assert.assertEquals(956, solution);
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 7: " + solution + " [" + time + "ms]");
 
-        instructions = Files.readAllLines(Paths.get(Day7Computer.class.getResource("/day7_instructions.txt").toURI()));
+        instructions = Files.readAllLines(Paths.get(Day7Computer.class.getResource("/s2015/day7_instructions.txt").toURI()));
         for (int i = 0; i < instructions.size(); i++) {
             if (instructions.get(i).endsWith(" -> b")) {
                 instructions.set(i, "956 -> b");
@@ -216,7 +216,7 @@ public class AdventCodeTest {
         Assert.assertEquals(12, Day8StringEscape.escapeToUnescapeCharacterDiff(strings));
 
         long time = System.currentTimeMillis();
-        int solution = Day8StringEscape.getEscapeToUnescapeCharacterDiff("/day8_teststrings.txt");
+        int solution = Day8StringEscape.getEscapeToUnescapeCharacterDiff("/s2015/day8_teststrings.txt");
         Assert.assertEquals(1371, solution);
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 8: " + solution + " [" + time + "ms]");
@@ -228,7 +228,7 @@ public class AdventCodeTest {
         Assert.assertEquals(19, Day8StringEscape.unescapeToEscapeCharacterDiff(strings));
 
         time = System.currentTimeMillis();
-        solution = Day8StringEscape.getUnescapeToEscapeCharacterDiff("/day8_teststrings.txt");
+        solution = Day8StringEscape.getUnescapeToEscapeCharacterDiff("/s2015/day8_teststrings.txt");
         Assert.assertEquals(2117, solution);
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 8 extra: " + solution + " [" + time + "ms]");

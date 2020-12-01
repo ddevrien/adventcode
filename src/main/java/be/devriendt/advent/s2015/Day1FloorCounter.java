@@ -1,4 +1,4 @@
-package be.devriendt.advent;
+package be.devriendt.advent.s2015;
 
 /**
  * Created by Dennis on 5/12/2015.

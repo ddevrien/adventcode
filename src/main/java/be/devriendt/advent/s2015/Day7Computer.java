@@ -1,4 +1,4 @@
-package be.devriendt.advent;
+package be.devriendt.advent.s2015;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
