@@ -4,9 +4,21 @@ import be.devriendt.advent.Util;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public class Day1ReportRepair {
+
+    private static class Pair {
+        final int a;
+        final int b;
+
+        public Pair(int a, int b) {
+            this.a = a;
+            this.b = b;
+        }
+    }
 
     public static int expensesToTwoEntrySolution(String filename) throws IOException, URISyntaxException {
         Integer[] numbers = getEntries(filename);
@@ -23,6 +35,16 @@ public class Day1ReportRepair {
         }
 
         return -1;
+    }
+
+    public static int expensesToTwoEntryStreamSolution(Integer... expenses) {
+        Optional<Integer> solution = Arrays.stream(expenses)
+                .flatMap(a -> Arrays.stream(expenses).map (b -> new Pair(a,b)))
+                .filter(pair -> pair.a + pair.b == 2020)
+                .map(pair -> pair.a * pair.b)
+                .findFirst();
+
+        return solution.orElse(-1);
     }
 
     public static int expensesToThreeEntrySolution(String filename) throws IOException, URISyntaxException {
