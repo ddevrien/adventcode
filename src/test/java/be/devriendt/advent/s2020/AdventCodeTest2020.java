@@ -53,4 +53,33 @@ public class AdventCodeTest2020 {
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 2 extra: " + solution + " [" + time + "ms]");
     }
+
+    @Test
+    public void day3_tobogganTrajectory() throws Exception {
+        String[] example = "..##.......\n#...#...#..\n.#....#..#.\n..#.#...#.#\n.#...##..#.\n..#.##.....\n.#.#.#....#\n.#........#\n#.##...#...\n#...##....#\n.#..#...#.#".split("\n");
+        String[] input = Util.getContent("/s2020/day3_map.txt").toArray(String[]::new);
+        Day3TobogganTrajectory.Instruction instruction = new Day3TobogganTrajectory.Instruction(3, 1);
+        List<Day3TobogganTrajectory.Instruction> instructions = asList(
+                new Day3TobogganTrajectory.Instruction(1, 1),
+                new Day3TobogganTrajectory.Instruction(3, 1),
+                new Day3TobogganTrajectory.Instruction(5, 1),
+                new Day3TobogganTrajectory.Instruction(7, 1),
+                new Day3TobogganTrajectory.Instruction(1, 2));
+
+        Assertions.assertEquals(7, Day3TobogganTrajectory.countNumberOfTrees(example, instruction));
+
+        long time = System.currentTimeMillis();
+        int solution = Day3TobogganTrajectory.countNumberOfTrees(input, instruction);
+        Assertions.assertEquals(181, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 3: " + solution + " [" + time + "ms]");
+
+        Assertions.assertEquals(336, Day3TobogganTrajectory.countNumberOfTrees(example, instructions));
+
+        time = System.currentTimeMillis();
+        solution = Day3TobogganTrajectory.countNumberOfTrees(input, instructions);
+        Assertions.assertEquals(1260601650, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 3 extra: " + solution + " [" + time + "ms]");
+    }
 }
