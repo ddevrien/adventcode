@@ -143,4 +143,27 @@ public class AdventCodeTest2020 {
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 4 extra: " + solution + " [" + time + "ms]");
     }
+
+    @Test
+    public void day5_binaryBoarding() throws Exception {
+        String[] examples = {"FBFBBFFRLR", "BFFFBBFRRR", "FFFBBBFRRR", "BBFFBBFRLL"};
+        List<String> input = Util.getContent("/s2020/day5_boardingpasses.txt");
+
+        Assertions.assertEquals(357, Day5BinaryBoarding.toSeatId(examples[0]));
+        Assertions.assertEquals(567, Day5BinaryBoarding.toSeatId(examples[1]));
+        Assertions.assertEquals(119, Day5BinaryBoarding.toSeatId(examples[2]));
+        Assertions.assertEquals(820, Day5BinaryBoarding.toSeatId(examples[3]));
+
+        long time = System.currentTimeMillis();
+        int solution = Day5BinaryBoarding.toSeatIdMax(input);
+        Assertions.assertEquals(965, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 5: " + solution + " [" + time + "ms]");
+
+        time = System.currentTimeMillis();
+        solution = Day5BinaryBoarding.toMissingSeatId(input);
+        Assertions.assertEquals(524, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 5 extra: " + solution + " [" + time + "ms]");
+    }
 }
