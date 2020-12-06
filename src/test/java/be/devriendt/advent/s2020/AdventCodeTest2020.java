@@ -166,4 +166,40 @@ public class AdventCodeTest2020 {
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 5 extra: " + solution + " [" + time + "ms]");
     }
+
+    @Test
+    public void day6_customCustoms() throws Exception {
+        List<String> example = asList(("abc\n" +
+                "\n" +
+                "a\n" +
+                "b\n" +
+                "c\n" +
+                "\n" +
+                "ab\n" +
+                "ac\n" +
+                "\n" +
+                "a\n" +
+                "a\n" +
+                "a\n" +
+                "a\n" +
+                "\n" +
+                "b").split("\n"));
+        List<String> input = Util.getContent("/s2020/day6_answers.txt");
+
+        Assertions.assertEquals(11, Day6CustomCustoms.getAnyoneYesAnswers(example));
+
+        long time = System.currentTimeMillis();
+        int solution = Day6CustomCustoms.getAnyoneYesAnswers(input);
+        Assertions.assertEquals(6565, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 6: " + solution + " [" + time + "ms]");
+
+        Assertions.assertEquals(6, Day6CustomCustoms.getEveryoneYesAnswers(example));
+
+        time = System.currentTimeMillis();
+        solution = Day6CustomCustoms.getEveryoneYesAnswers(input);
+        Assertions.assertEquals(294, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 6 extra: " + solution + " [" + time + "ms]");
+    }
 }
