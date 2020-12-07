@@ -198,8 +198,38 @@ public class AdventCodeTest2020 {
 
         time = System.currentTimeMillis();
         solution = Day6CustomCustoms.getEveryoneYesAnswers(input);
-        Assertions.assertEquals(294, solution);
+        Assertions.assertEquals(3137, solution);
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 6 extra: " + solution + " [" + time + "ms]");
+    }
+
+    @Test
+    public void day7_handyHaversacks() throws Exception {
+        List<String> example = asList(("light red bags contain 1 bright white bag, 2 muted yellow bags.\n" +
+                "dark orange bags contain 3 bright white bags, 4 muted yellow bags.\n" +
+                "bright white bags contain 1 shiny gold bag.\n" +
+                "muted yellow bags contain 2 shiny gold bags, 9 faded blue bags.\n" +
+                "shiny gold bags contain 1 dark olive bag, 2 vibrant plum bags.\n" +
+                "dark olive bags contain 3 faded blue bags, 4 dotted black bags.\n" +
+                "vibrant plum bags contain 5 faded blue bags, 6 dotted black bags.\n" +
+                "faded blue bags contain no other bags.\n" +
+                "dotted black bags contain no other bags.").split("\n"));
+        List<String> input = Util.getContent("/s2020/day7_rules.txt");
+
+        Assertions.assertEquals(4, Day7HandyHaversacks.getTotalValidCombinations("shiny gold", example));
+
+        long time = System.currentTimeMillis();
+        int solution = Day7HandyHaversacks.getTotalValidCombinations("shiny gold", input);
+        Assertions.assertEquals(164, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 7: " + solution + " [" + time + "ms]");
+
+        Assertions.assertEquals(32, Day7HandyHaversacks.getTotalCost("shiny gold", example));
+
+        time = System.currentTimeMillis();
+        solution = Day7HandyHaversacks.getTotalCost("shiny gold", input);
+        Assertions.assertEquals(7872, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 7 extra: " + solution + " [" + time + "ms]");
     }
 }
