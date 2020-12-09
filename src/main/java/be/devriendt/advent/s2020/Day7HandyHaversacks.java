@@ -59,11 +59,11 @@ public class Day7HandyHaversacks {
     private static void toBagRule(String rule, HashMap<String, Bag> bags) {
         String[] parts = rule.split(" bags contain ");
         String[] contents = parts[1].split(" bags?[,.] ?");
-        Bag bagRule = bags.computeIfAbsent(parts[0], c -> new Bag(c));
+        Bag bagRule = bags.computeIfAbsent(parts[0], Bag::new);
         if (!contents[0].startsWith("no other")) {
             for(String entry: contents) {
                 String bagEntryColor = entry.substring(2);
-                Bag bag = bags.computeIfAbsent(bagEntryColor, c -> new Bag(c));
+                Bag bag = bags.computeIfAbsent(bagEntryColor, Bag::new);
                 bagRule.contents.add(new BagEntry(bag, Integer.parseInt(entry.substring(0, 1))));
             }
         }

@@ -232,4 +232,36 @@ public class AdventCodeTest2020 {
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 7 extra: " + solution + " [" + time + "ms]");
     }
+
+    @Test
+    public void day8_handheldHandling() throws Exception {
+        List<String> example = asList(("nop +0\n" +
+                "acc +1\n" +
+                "jmp +4\n" +
+                "acc +3\n" +
+                "jmp -3\n" +
+                "acc -99\n" +
+                "acc +1\n" +
+                "jmp -4\n" +
+                "acc +6").split("\n"));
+        List<String> input = Util.getContent("/s2020/day8_instructions.txt");
+
+        Day8HandheldHandling.InfiniteLoopException e =
+                Assertions.assertThrows(Day8HandheldHandling.InfiniteLoopException.class, () -> Day8HandheldHandling.getAccumulatorValue(example));
+        Assertions.assertEquals(5, e.getAccumulator());
+
+        long time = System.currentTimeMillis();
+        e = Assertions.assertThrows(Day8HandheldHandling.InfiniteLoopException.class, () -> Day8HandheldHandling.getAccumulatorValue(input));
+        Assertions.assertEquals(2034, e.getAccumulator());
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 8: " + e.getAccumulator() + " [" + time + "ms]");
+
+        Assertions.assertEquals(8, Day8HandheldHandling.findInfiniteLoopFixAndGetAccumulatorValue(example));
+
+        time = System.currentTimeMillis();
+        int solution = Day8HandheldHandling.findInfiniteLoopFixAndGetAccumulatorValue(input);
+        Assertions.assertEquals(672, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 8 extra: " + solution + " [" + time + "ms]");
+    }
 }
