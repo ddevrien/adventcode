@@ -47,10 +47,10 @@ public class Day8HandheldHandling {
             if (line.startsWith("nop")) {
                 cursor++;
             } else if (line.startsWith("acc")) {
-                accumulator += getArgument(line);
+                accumulator += Integer.parseInt(line.substring(4));
                 cursor++;
             } else if (line.startsWith("jmp")) {
-                cursor += getArgument(line);
+                cursor += Integer.parseInt(line.substring(4));
             }
         }
 
@@ -59,17 +59,5 @@ public class Day8HandheldHandling {
         }
 
         return accumulator;
-    }
-
-    private static int getArgument(String line) {
-        int val = Integer.parseInt(line.substring(5));
-        char sign = line.charAt(4);
-        if (sign == '+') {
-            return val;
-        } else if (sign == '-') {
-            return -val;
-        } else {
-            throw new IllegalArgumentException("cannot process " + line);
-        }
     }
 }

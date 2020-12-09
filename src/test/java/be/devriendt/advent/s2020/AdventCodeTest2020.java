@@ -264,4 +264,26 @@ public class AdventCodeTest2020 {
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 8 extra: " + solution + " [" + time + "ms]");
     }
+
+    @Test
+    public void day9_encodingError() throws Exception {
+        List<String> example = asList("35\n20\n15\n25\n47\n40\n62\n55\n65\n95\n102\n117\n150\n182\n127\n219\n299\n277\n309\n576".split("\n"));
+        List<String> input = Util.getContent("/s2020/day9_numbers.txt");
+
+        Assertions.assertEquals(127, Day9EncodingError.findInvalidNumber(5, example));
+
+        long time = System.currentTimeMillis();
+        long solution = Day9EncodingError.findInvalidNumber(25, input);
+        Assertions.assertEquals(20874512, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 9: " + solution + " [" + time + "ms]");
+
+        Assertions.assertEquals(62, Day9EncodingError.findContiguousSetForInvalidNumber(5, example));
+
+        time = System.currentTimeMillis();
+        solution = Day9EncodingError.findContiguousSetForInvalidNumber(25, input);
+        Assertions.assertEquals(3012420, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 9 extra: " + solution + " [" + time + "ms]");
+    }
 }
