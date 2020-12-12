@@ -311,4 +311,36 @@ public class AdventCodeTest2020 {
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 10 extra: " + solution + " [" + time + "ms]");
     }
+
+    @Test
+    public void day11_seatingSystem() throws Exception {
+        List<String> example = asList((
+                "L.LL.LL.LL\n" +
+                "LLLLLLL.LL\n" +
+                "L.L.L..L..\n" +
+                "LLLL.LL.LL\n" +
+                "L.LL.LL.LL\n" +
+                "L.LLLLL.LL\n" +
+                "..L.L.....\n" +
+                "LLLLLLLLLL\n" +
+                "L.LLLLLL.L\n" +
+                "L.LLLLL.LL").split("\n"));
+        List<String> input = Util.getContent("/s2020/day11_floorplan.txt");
+
+        Assertions.assertEquals(37, Day11SeatingSystem.getNrOfOccupiedSeats(example));
+
+        long time = System.currentTimeMillis();
+        int solution = Day11SeatingSystem.getNrOfOccupiedSeats(input);
+        Assertions.assertEquals(2164, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 11: " + solution + " [" + time + "ms]");
+
+        Assertions.assertEquals(26, Day11SeatingSystem.getNrOfOccupiedSeatsPart2(example));
+
+        time = System.currentTimeMillis();
+        solution = Day11SeatingSystem.getNrOfOccupiedSeatsPart2(input);
+        Assertions.assertEquals(1974, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 11 extra: " + solution + " [" + time + "ms]");
+    }
 }

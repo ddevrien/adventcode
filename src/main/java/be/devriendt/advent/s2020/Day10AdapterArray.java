@@ -39,14 +39,10 @@ public class Day10AdapterArray {
 
         long sum = 0;
 
-        if (input.contains(cursor+1)) {
-            sum += getJoltagePermutationsRecursive(input, cursor+1, max);
-        }
-        if (input.contains(cursor+2)) {
-            sum += getJoltagePermutationsRecursive(input, cursor+2, max);
-        }
-        if (input.contains(cursor+3)) {
-            sum += getJoltagePermutationsRecursive(input, cursor+3, max);
+        for (int jolt = 1; jolt <= 3; jolt++) {
+            if (input.contains(cursor + jolt)) {
+                sum += getJoltagePermutationsRecursive(input, cursor + jolt, max);
+            }
         }
 
         LOOKUP_TABLE.put(cursor, sum);
