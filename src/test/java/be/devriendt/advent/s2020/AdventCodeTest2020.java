@@ -267,8 +267,8 @@ public class AdventCodeTest2020 {
 
     @Test
     public void day9_encodingError() throws Exception {
-        List<String> example = asList("35\n20\n15\n25\n47\n40\n62\n55\n65\n95\n102\n117\n150\n182\n127\n219\n299\n277\n309\n576".split("\n"));
-        List<String> input = Util.getContent("/s2020/day9_numbers.txt");
+        List<Long> example = asList(35L,20L,15L,25L,47L,40L,62L,55L,65L,95L,102L,117L,150L,182L,127L,219L,299L,277L,309L,576L);
+        List<Long> input = Util.getContentAsLongs("/s2020/day9_numbers.txt");
 
         Assertions.assertEquals(127, Day9EncodingError.findInvalidNumber(5, example));
 
@@ -285,5 +285,30 @@ public class AdventCodeTest2020 {
         Assertions.assertEquals(3012420, solution);
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 9 extra: " + solution + " [" + time + "ms]");
+    }
+
+    @Test
+    public void day10_adapterArray() throws Exception {
+        List<Integer> example = asList(16,10,15,5,1,11,7,19,6,12,4);
+        List<Integer> example2 = asList(28,33,18,42,31,14,46,20,48,47,24,23,49,45,19,38,39,11,1,32,25,35,8,17,7,9,4,2,34,10,3);
+        List<Integer> input = Util.getContentAsIntegers("/s2020/day10_adapters.txt");
+
+        Assertions.assertEquals(7*5, Day10AdapterArray.getJoltageDifference(example).diffs);
+        Assertions.assertEquals(22*10, Day10AdapterArray.getJoltageDifference(example2).diffs);
+
+        long time = System.currentTimeMillis();
+        long solution = Day10AdapterArray.getJoltageDifference(input).diffs;
+        Assertions.assertEquals(2080, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 10: " + solution + " [" + time + "ms]");
+
+        Assertions.assertEquals(8, Day10AdapterArray.getJoltagePermutations(example));
+        Assertions.assertEquals(19208, Day10AdapterArray.getJoltagePermutations(example2));
+
+        time = System.currentTimeMillis();
+        solution = Day10AdapterArray.getJoltagePermutations(input);
+        Assertions.assertEquals(6908379398144L, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 10 extra: " + solution + " [" + time + "ms]");
     }
 }

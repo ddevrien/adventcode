@@ -4,13 +4,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collectors;
 
 public class Day9EncodingError {
 
-    public static long findContiguousSetForInvalidNumber(int windowSize, List<String> input) {
-        List<Long> numbers = input.stream().map(Long::parseLong).collect(Collectors.toList());
-        long invalidNumber = findInvalidNumber(windowSize, input);
+    public static long findContiguousSetForInvalidNumber(int windowSize, List<Long> numbers) {
+        long invalidNumber = findInvalidNumber(windowSize, numbers);
 
         for (int i = 0; i < numbers.size(); i++) {
             int j = i+1;
@@ -32,9 +30,7 @@ public class Day9EncodingError {
         return -1;
     }
 
-    public static long findInvalidNumber(int windowSize, List<String> input) {
-        List<Long> numbers = input.stream().map(Long::parseLong).collect(Collectors.toList());
-
+    public static long findInvalidNumber(int windowSize, List<Long> numbers) {
         HashSet<Long> window = new HashSet<>(windowSize);
         final AtomicInteger cursor = new AtomicInteger(0);
         window.addAll(numbers.subList(0, windowSize));
