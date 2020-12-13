@@ -10,7 +10,7 @@ public class Day11SeatingSystem {
     private static final char OCCUPIED_SEAT = '#';
 
     private enum Direction {
-        UP, DOWN, LEFT, RIGHT, UP_LEFT, UP_RIGHT, DOWN_LEFT, DOWN_RIGHT;
+        UP, DOWN, LEFT, RIGHT, UP_LEFT, UP_RIGHT, DOWN_LEFT, DOWN_RIGHT
     }
 
     private static final class Coordinate {

@@ -343,4 +343,30 @@ public class AdventCodeTest2020 {
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 11 extra: " + solution + " [" + time + "ms]");
     }
+
+    @Test
+    public void day12_rainRisk() throws Exception {
+        List<String> example = asList(("F10\n" +
+                "N3\n" +
+                "F7\n" +
+                "R90\n" +
+                "F11").split("\n"));
+        List<String> input = Util.getContent("/s2020/day12_instructions.txt");
+
+        Assertions.assertEquals(25, Day12RainRisk.getManhattanDistance(example));
+
+        long time = System.currentTimeMillis();
+        int solution = Day12RainRisk.getManhattanDistance(input);
+        Assertions.assertEquals(2297, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 12: " + solution + " [" + time + "ms]");
+
+        Assertions.assertEquals(286, Day12RainRisk.getManhattanDistanceWithWaypoint(example));
+
+        time = System.currentTimeMillis();
+        solution = Day12RainRisk.getManhattanDistanceWithWaypoint(input);
+        Assertions.assertEquals(89984, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 12 extra: " + solution + " [" + time + "ms]");
+    }
 }
