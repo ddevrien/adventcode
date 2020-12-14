@@ -369,4 +369,37 @@ public class AdventCodeTest2020 {
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 12 extra: " + solution + " [" + time + "ms]");
     }
+
+    @Test
+    public void day13_shuttleSearch() throws Exception {
+        List<String> example = asList("939", "7,13,x,x,59,x,31,19");
+        List<String> example2 = asList("", "17,x,13,19");
+        List<String> example3 = asList("", "67,7,59,61");
+        List<String> example4 = asList("", "67,x,7,59,61");
+        List<String> example5 = asList("", "67,7,x,59,61");
+        List<String> example6 = asList("", "1789,37,47,1889");
+
+        List<String> input = asList("1008832", "23,x,x,x,x,x,x,x,x,x,x,x,x,41,x,x,x,x,x,x,x,x,x,449,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,13,19,x,x,x,x,x,x,x,x,x,29,x,991,x,x,x,x,x,37,x,x,x,x,x,x,x,x,x,x,17");
+
+        Assertions.assertEquals(295, Day13ShuttleSearch.getBusSolution(example));
+
+        long time = System.currentTimeMillis();
+        long solution = Day13ShuttleSearch.getBusSolution(input);
+        Assertions.assertEquals(5946, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 13: " + solution + " [" + time + "ms]");
+
+        Assertions.assertEquals(1068781, Day13ShuttleSearch.getMatchingDepartureForBusses(example));
+        Assertions.assertEquals(3417, Day13ShuttleSearch.getMatchingDepartureForBusses(example2));
+        Assertions.assertEquals(754018, Day13ShuttleSearch.getMatchingDepartureForBusses(example3));
+        Assertions.assertEquals(779210, Day13ShuttleSearch.getMatchingDepartureForBusses(example4));
+        Assertions.assertEquals(1261476, Day13ShuttleSearch.getMatchingDepartureForBusses(example5));
+        Assertions.assertEquals(1202161486, Day13ShuttleSearch.getMatchingDepartureForBusses(example6));
+
+        time = System.currentTimeMillis();
+//        solution = Day13ShuttleSearch.getMatchingDepartureForBusses(input); takes HOURS :D
+//        Assertions.assertEquals(645338524823718L, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 13 extra: " + solution + " [" + time + "ms]");
+    }
 }
