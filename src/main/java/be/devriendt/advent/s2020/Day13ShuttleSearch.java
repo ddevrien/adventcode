@@ -1,8 +1,8 @@
 package be.devriendt.advent.s2020;
 
+import java.math.BigInteger;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.LongStream;
 
 public class Day13ShuttleSearch {
 
@@ -32,10 +32,6 @@ public class Day13ShuttleSearch {
             this.busId = busId;
             this.offset = offset;
         }
-
-        public int getBusId() {
-            return busId;
-        }
     }
 
     public static int getBusSolution(List<String> input) {
@@ -53,65 +49,36 @@ public class Day13ShuttleSearch {
 
     public static long getMatchingDepartureForBusses(List<String> input) {
         String[] busIds = input.get(1).split(",");
-        List<BusWithOffset> busses = new ArrayList<>(busIds.length);
 
-        for (int i = 0; i < busIds.length; i++) {
+        long solution = 0;
+        long lcm = Integer.parseInt(busIds[0]);
+
+        for (int i = 1; i < busIds.length; i++) {
             if (!busIds[i].equals("x")) {
-                BusWithOffset busWithOffset = new BusWithOffset(Integer.parseInt(busIds[i]), i);
-                busses.add(busWithOffset);
+                BusWithOffset bus = new BusWithOffset(Integer.parseInt(busIds[i]), i);
+                solution = findSolution(solution, lcm, bus);
+                lcm = lcm(lcm, bus.busId);
             }
         }
 
-        busses.sort(Comparator.comparing(BusWithOffset::getBusId).reversed());
-        BusWithOffset busWithHighestId = busses.get(0);
-        long earliestSolution = -busWithHighestId.offset;
-        boolean solution = false;
-
-        while (!solution) {
-            earliestSolution += busWithHighestId.busId;
-
-            for (int i = 0; i < busses.size(); i++) {
-                BusWithOffset nextBus = busses.get(i);
-                if ((earliestSolution + nextBus.offset) % nextBus.busId != 0) {
-                    break;
-                } else if (i == busses.size() -1) {
-                    solution = true;
-                }
-            }
-        }
-
-        return earliestSolution;
+        return solution;
     }
 
-    public static long getMatchingDepartureForBussesParallel(List<String> input) {
-        String[] busIds = input.get(1).split(",");
-        final List<BusWithOffset> busses = new ArrayList<>(busIds.length);
+    private static long findSolution(long start, long step, BusWithOffset bus) {
+        long solution = start;
 
-        for (int i = 0; i < busIds.length; i++) {
-            if (!busIds[i].equals("x")) {
-                BusWithOffset busWithOffset = new BusWithOffset(Integer.parseInt(busIds[i]), i);
-                busses.add(busWithOffset);
-            }
-        }
+        do {
+            solution += step;
+        } while ((solution + bus.offset) % bus.busId != 0);
 
-        busses.sort(Comparator.comparing(BusWithOffset::getBusId).reversed());
-        BusWithOffset busWithHighestId = busses.get(0);
-
-        OptionalLong first = LongStream.iterate(-busWithHighestId.offset, i -> i + busWithHighestId.busId)
-                .parallel()
-                .filter(candidate -> {
-                    for (int i = 0; i < busses.size(); i++) {
-                        BusWithOffset nextBus = busses.get(i);
-                        if ((candidate + nextBus.offset) % nextBus.busId != 0) {
-                            return false;
-                        } else if (i == busses.size() - 1) {
-                            return true;
-                        }
-                    }
-                    return false;
-                })
-                .findFirst();
-
-        return first.getAsLong();
+        return solution;
     }
+
+    private static long lcm(long a, long b) {
+        BigInteger biA =  BigInteger.valueOf(a);
+        BigInteger biB =  BigInteger.valueOf(b);
+        BigInteger gcd = biA.gcd(biB);
+        return biA.multiply(biB).divide(gcd).longValue();
+    }
+
 }

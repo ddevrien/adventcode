@@ -397,8 +397,8 @@ public class AdventCodeTest2020 {
         Assertions.assertEquals(1202161486, Day13ShuttleSearch.getMatchingDepartureForBusses(example6));
 
         time = System.currentTimeMillis();
-//        solution = Day13ShuttleSearch.getMatchingDepartureForBusses(input); takes HOURS :D
-//        Assertions.assertEquals(645338524823718L, solution);
+        solution = Day13ShuttleSearch.getMatchingDepartureForBusses(input);
+        Assertions.assertEquals(645338524823718L, solution);
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 13 extra: " + solution + " [" + time + "ms]");
     }
