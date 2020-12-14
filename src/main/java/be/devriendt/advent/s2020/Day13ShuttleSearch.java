@@ -2,6 +2,7 @@ package be.devriendt.advent.s2020;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.LongStream;
 
 public class Day13ShuttleSearch {
 
@@ -80,5 +81,37 @@ public class Day13ShuttleSearch {
         }
 
         return earliestSolution;
+    }
+
+    public static long getMatchingDepartureForBussesParallel(List<String> input) {
+        String[] busIds = input.get(1).split(",");
+        final List<BusWithOffset> busses = new ArrayList<>(busIds.length);
+
+        for (int i = 0; i < busIds.length; i++) {
+            if (!busIds[i].equals("x")) {
+                BusWithOffset busWithOffset = new BusWithOffset(Integer.parseInt(busIds[i]), i);
+                busses.add(busWithOffset);
+            }
+        }
+
+        busses.sort(Comparator.comparing(BusWithOffset::getBusId).reversed());
+        BusWithOffset busWithHighestId = busses.get(0);
+
+        OptionalLong first = LongStream.iterate(-busWithHighestId.offset, i -> i + busWithHighestId.busId)
+                .parallel()
+                .filter(candidate -> {
+                    for (int i = 0; i < busses.size(); i++) {
+                        BusWithOffset nextBus = busses.get(i);
+                        if ((candidate + nextBus.offset) % nextBus.busId != 0) {
+                            return false;
+                        } else if (i == busses.size() - 1) {
+                            return true;
+                        }
+                    }
+                    return false;
+                })
+                .findFirst();
+
+        return first.getAsLong();
     }
 }

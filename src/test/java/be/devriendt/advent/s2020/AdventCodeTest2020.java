@@ -402,4 +402,33 @@ public class AdventCodeTest2020 {
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 13 extra: " + solution + " [" + time + "ms]");
     }
+
+    @Test
+    public void day14_dockingData() throws Exception {
+        List<String> example = asList(("mask = XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX0X\n" +
+                "mem[8] = 11\n" +
+                "mem[7] = 101\n" +
+                "mem[8] = 0").split("\n"));
+        List<String> example2 = asList(("mask = 000000000000000000000000000000X1001X\n" +
+                "mem[42] = 100\n" +
+                "mask = 00000000000000000000000000000000X0XX\n" +
+                "mem[26] = 1").split("\n"));
+        List<String> input = Util.getContent("/s2020/day14_initprogram.txt");
+
+        Assertions.assertEquals(165, Day14DockingData.getSumOfMemoryValues(example));
+
+        long time = System.currentTimeMillis();
+        long solution = Day14DockingData.getSumOfMemoryValues(input);
+        Assertions.assertEquals(5875750429995L, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 14: " + solution + " [" + time + "ms]");
+
+        Assertions.assertEquals(208, Day14DockingData.getSumOfMemoryValuesPart2(example2));
+
+        time = System.currentTimeMillis();
+        solution = Day14DockingData.getSumOfMemoryValuesPart2(input);
+        Assertions.assertEquals(5272149590143L, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 12 extra: " + solution + " [" + time + "ms]");
+    }
 }
