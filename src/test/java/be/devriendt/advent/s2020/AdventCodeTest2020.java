@@ -429,6 +429,28 @@ public class AdventCodeTest2020 {
         solution = Day14DockingData.getSumOfMemoryValuesPart2(input);
         Assertions.assertEquals(5272149590143L, solution);
         time = System.currentTimeMillis() - time;
-        System.out.println("DAY 12 extra: " + solution + " [" + time + "ms]");
+        System.out.println("DAY 14 extra: " + solution + " [" + time + "ms]");
+    }
+
+    @Test
+    public void day15_rambunctiousRecitation() throws Exception {
+        List<Integer> example = asList(0,3,6);
+        List<Integer> input = asList(12,1,16,3,11,0);
+
+        Assertions.assertEquals(436, Day15RambunctiousRecitation.getNumberSpokenOnTurn(example, 2020));
+
+        long time = System.currentTimeMillis();
+        int solution = Day15RambunctiousRecitation.getNumberSpokenOnTurn(input, 2020);
+        Assertions.assertEquals(1696, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 15: " + solution + " [" + time + "ms]");
+
+        Assertions.assertEquals(175594, Day15RambunctiousRecitation.getNumberSpokenOnTurn(example, 30000000));
+
+        time = System.currentTimeMillis();
+        solution = Day15RambunctiousRecitation.getNumberSpokenOnTurn(input, 30000000);
+        Assertions.assertEquals(37385, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 15 extra: " + solution + " [" + time + "ms]");
     }
 }
