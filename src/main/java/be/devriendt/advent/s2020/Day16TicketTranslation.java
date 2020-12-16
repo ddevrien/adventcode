@@ -53,9 +53,7 @@ public class Day16TicketTranslation {
     private static boolean ruleConformsWithAllTicketsOnPos(TicketRule rule, final int pos, List<List<Integer>> validTickets) {
         return validTickets.stream()
                 .map(ticket -> ticket.get(pos))
-                .filter(rule::valueViolatesRule)
-                .findAny()
-                .isEmpty();
+                .noneMatch(rule::valueViolatesRule);
     }
 
     private static class Tickets {

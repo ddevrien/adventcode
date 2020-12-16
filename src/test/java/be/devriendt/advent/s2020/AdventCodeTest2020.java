@@ -445,10 +445,10 @@ public class AdventCodeTest2020 {
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 15: " + solution + " [" + time + "ms]");
 
-        Assertions.assertEquals(175594, Day15RambunctiousRecitation.getNumberSpokenOnTurn(example, 30000000));
+        Assertions.assertEquals(175594, Day15RambunctiousRecitation.getNumberSpokenOnTurn(example, 30_000_000));
 
         time = System.currentTimeMillis();
-        solution = Day15RambunctiousRecitation.getNumberSpokenOnTurn(input, 30000000);
+        solution = Day15RambunctiousRecitation.getNumberSpokenOnTurn(input, 30_000_000);
         Assertions.assertEquals(37385, solution);
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 15 extra: " + solution + " [" + time + "ms]");
@@ -473,15 +473,15 @@ public class AdventCodeTest2020 {
         Assertions.assertEquals(71, Day16TicketTranslation.findTicketScanningErrorRate(example));
 
         long time = System.currentTimeMillis();
-        int solution = Day16TicketTranslation.findTicketScanningErrorRate(input);
+        long solution = Day16TicketTranslation.findTicketScanningErrorRate(input);
         Assertions.assertEquals(21956, solution);
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 16: " + solution + " [" + time + "ms]");
 
         time = System.currentTimeMillis();
-        long sol = Day16TicketTranslation.findTicketSpecifics(input);
-        Assertions.assertEquals(3709435214239L, sol);
+        solution = Day16TicketTranslation.findTicketSpecifics(input);
+        Assertions.assertEquals(3709435214239L, solution);
         time = System.currentTimeMillis() - time;
-        System.out.println("DAY 16 extra: " + sol + " [" + time + "ms]");
+        System.out.println("DAY 16 extra: " + solution + " [" + time + "ms]");
     }
 }
