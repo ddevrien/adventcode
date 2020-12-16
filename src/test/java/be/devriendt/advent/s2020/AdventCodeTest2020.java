@@ -453,4 +453,35 @@ public class AdventCodeTest2020 {
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 15 extra: " + solution + " [" + time + "ms]");
     }
+
+    @Test
+    public void day16_ticketTranslation() throws Exception {
+        List<String> example = asList(("class: 1-3 or 5-7\n" +
+                "row: 6-11 or 33-44\n" +
+                "seat: 13-40 or 45-50\n" +
+                "\n" +
+                "your ticket:\n" +
+                "7,1,14\n" +
+                "\n" +
+                "nearby tickets:\n" +
+                "7,3,47\n" +
+                "40,4,50\n" +
+                "55,2,20\n" +
+                "38,6,12").split("\n"));
+        List<String> input = Util.getContent("/s2020/day16_tickets.txt");
+
+        Assertions.assertEquals(71, Day16TicketTranslation.findTicketScanningErrorRate(example));
+
+        long time = System.currentTimeMillis();
+        int solution = Day16TicketTranslation.findTicketScanningErrorRate(input);
+        Assertions.assertEquals(21956, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 16: " + solution + " [" + time + "ms]");
+
+        time = System.currentTimeMillis();
+        long sol = Day16TicketTranslation.findTicketSpecifics(input);
+        Assertions.assertEquals(3709435214239L, sol);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 16 extra: " + sol + " [" + time + "ms]");
+    }
 }
