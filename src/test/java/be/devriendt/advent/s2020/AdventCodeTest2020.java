@@ -484,4 +484,37 @@ public class AdventCodeTest2020 {
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 16 extra: " + solution + " [" + time + "ms]");
     }
+
+    @Test
+    public void day17_conwayCubes() throws Exception {
+        List<String> example = asList((
+                ".#.\n" +
+                "..#\n" +
+                "###").split("\n"));
+        List<String> input = asList((
+                "####...#\n" +
+                "......##\n" +
+                "####..##\n" +
+                "##......\n" +
+                "..##.##.\n" +
+                "#.##...#\n" +
+                "....##.#\n" +
+                ".##.#.#.").split("\n"));
+
+        Assertions.assertEquals(112, Day17ConwayCubes.findNumberOfActiveCubes(example, 6));
+
+        long time = System.currentTimeMillis();
+        int solution = Day17ConwayCubes.findNumberOfActiveCubes(input, 6);
+        Assertions.assertEquals(237, solution); // too high
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 17: " + solution + " [" + time + "ms]");
+
+        Assertions.assertEquals(848, Day17ConwayCubes.findNumberOfActiveCubesInHyperDimension(example, 6));
+
+        time = System.currentTimeMillis();
+        solution = Day17ConwayCubes.findNumberOfActiveCubesInHyperDimension(input, 6);
+        Assertions.assertEquals(2448, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 17 extra: " + solution + " [" + time + "ms]");
+    }
 }
