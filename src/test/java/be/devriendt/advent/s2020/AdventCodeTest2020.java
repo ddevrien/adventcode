@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
 
 public class AdventCodeTest2020 {
 
@@ -505,7 +506,7 @@ public class AdventCodeTest2020 {
 
         long time = System.currentTimeMillis();
         int solution = Day17ConwayCubes.findNumberOfActiveCubes(input, 6);
-        Assertions.assertEquals(237, solution); // too high
+        Assertions.assertEquals(237, solution);
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 17: " + solution + " [" + time + "ms]");
 
@@ -516,5 +517,37 @@ public class AdventCodeTest2020 {
         Assertions.assertEquals(2448, solution);
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 17 extra: " + solution + " [" + time + "ms]");
+    }
+
+    @Test
+    public void day18_operationOrder() throws Exception {
+        List<String> example = singletonList("1 + 2 * 3 + 4 * 5 + 6");
+        List<String> input = Util.getContent("/s2020/day18_expressions.txt");
+
+        Assertions.assertEquals(71, Day18OperationOrder.calculateExpression(example));
+        Assertions.assertEquals(51, Day18OperationOrder.calculateExpression(singletonList("1 + (2 * 3) + (4 * (5 + 6))")));
+        Assertions.assertEquals(26, Day18OperationOrder.calculateExpression(singletonList("2 * 3 + (4 * 5)")));
+        Assertions.assertEquals(437, Day18OperationOrder.calculateExpression(singletonList("5 + (8 * 3 + 9 + 3 * 4 * 3)")));
+        Assertions.assertEquals(12240, Day18OperationOrder.calculateExpression(singletonList("5 * 9 * (7 * 3 * 3 + 9 * 3 + (8 + 6 * 4))")));
+        Assertions.assertEquals(13632, Day18OperationOrder.calculateExpression(singletonList("((2 + 4 * 9) * (6 + 9 * 8 + 6) + 6) + 2 + 4 * 2")));
+
+        long time = System.currentTimeMillis();
+        long solution = Day18OperationOrder.calculateExpression(input);
+        Assertions.assertEquals(18213007238947L, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 18: " + solution + " [" + time + "ms]");
+
+        Assertions.assertEquals(231, Day18OperationOrder.calculateExpressionAdditionPrecedence(example));
+        Assertions.assertEquals(51, Day18OperationOrder.calculateExpressionAdditionPrecedence(singletonList("1 + (2 * 3) + (4 * (5 + 6))")));
+        Assertions.assertEquals(46, Day18OperationOrder.calculateExpressionAdditionPrecedence(singletonList("2 * 3 + (4 * 5)")));
+        Assertions.assertEquals(1445, Day18OperationOrder.calculateExpressionAdditionPrecedence(singletonList("5 + (8 * 3 + 9 + 3 * 4 * 3)")));
+        Assertions.assertEquals(669060, Day18OperationOrder.calculateExpressionAdditionPrecedence(singletonList("5 * 9 * (7 * 3 * 3 + 9 * 3 + (8 + 6 * 4))")));
+        Assertions.assertEquals(23340, Day18OperationOrder.calculateExpressionAdditionPrecedence(singletonList("((2 + 4 * 9) * (6 + 9 * 8 + 6) + 6) + 2 + 4 * 2")));
+
+        time = System.currentTimeMillis();
+        solution = Day18OperationOrder.calculateExpressionAdditionPrecedence(input);
+        Assertions.assertEquals(388966573054664L, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 18 extra: " + solution + " [" + time + "ms]");
     }
 }
