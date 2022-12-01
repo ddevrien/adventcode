@@ -233,4 +233,14 @@ public class AdventCodeTest {
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 8 extra: " + solution + " [" + time + "ms]");
     }
+
+//    @Test
+//    public void day9_tsp() throws Exception {
+//        List<String> routes = new ArrayList<>();
+//        routes.add("London to Dublin = 464");
+//        routes.add("London to Belfast = 518");
+//        routes.add("Dublin to Belfast = 141");
+//
+//        Assertions.assertEquals(2, Day9TSP.shortestRoute(routes));
+//    }
 }
