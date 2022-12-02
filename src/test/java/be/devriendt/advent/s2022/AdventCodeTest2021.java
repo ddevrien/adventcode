@@ -1,6 +1,8 @@
 package be.devriendt.advent.s2022;
 
+import be.devriendt.advent.Util;
 import be.devriendt.advent.s2021.Day1CalorieCounting;
+import be.devriendt.advent.s2021.Day2RockPaperScissors;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -29,5 +31,28 @@ public class AdventCodeTest2021 {
         Assertions.assertEquals(215594, solution);
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 1 extra: " + solution + " [" + time + "ms]");
+    }
+
+    @Test
+    public void day2_rockPaperScissors() throws Exception {
+        List<String> example = List.of("A Y", "B X", "C Z");
+
+        String input = "/s2021/day2_rsp.txt";
+
+        Assertions.assertEquals(15, Day2RockPaperScissors.executeWithStrategy(example));
+
+        long time = System.currentTimeMillis();
+        int solution = Day2RockPaperScissors.executeWithStrategy(Util.getContent(input));
+        Assertions.assertEquals(9759, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 2: " + solution + " [" + time + "ms]");
+
+        Assertions.assertEquals(12, Day2RockPaperScissors.executeWithStrategy2(example));
+
+        time = System.currentTimeMillis();
+        solution = Day2RockPaperScissors.executeWithStrategy2(Util.getContent(input));
+        Assertions.assertEquals(12429, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 2 extra: " + solution + " [" + time + "ms]");
     }
 }
