@@ -68,20 +68,20 @@ public class AdventCodeTest2021 {
 
         String input = "/s2021/day3_rucksacks.txt";
 
-        Assertions.assertEquals(15, Day3RucksackReorganization.findPrioritySum(example));
+        Assertions.assertEquals(157, Day3RucksackReorganization.findPrioritySum(example));
 
         long time = System.currentTimeMillis();
-        int solution = Day2RockPaperScissors.executeWithStrategy(Util.getContent(input));
-        Assertions.assertEquals(9759, solution);
+        int solution = Day3RucksackReorganization.findPrioritySum(Util.getContent(input));
+        Assertions.assertEquals(8401, solution);
         time = System.currentTimeMillis() - time;
-        System.out.println("DAY 2: " + solution + " [" + time + "ms]");
+        System.out.println("DAY 3: " + solution + " [" + time + "ms]");
 
-        Assertions.assertEquals(12, Day2RockPaperScissors.executeWithStrategy2(example));
+        Assertions.assertEquals(70, Day3RucksackReorganization.findPrioritySum3(example));
 
         time = System.currentTimeMillis();
-        solution = Day2RockPaperScissors.executeWithStrategy2(Util.getContent(input));
-        Assertions.assertEquals(12429, solution);
+        solution = Day3RucksackReorganization.findPrioritySum3(Util.getContent(input));
+        Assertions.assertEquals(2641, solution);
         time = System.currentTimeMillis() - time;
-        System.out.println("DAY 2 extra: " + solution + " [" + time + "ms]");
+        System.out.println("DAY 3 extra: " + solution + " [" + time + "ms]");
     }
 }
