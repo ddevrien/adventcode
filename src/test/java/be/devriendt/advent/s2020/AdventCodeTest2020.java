@@ -550,4 +550,37 @@ public class AdventCodeTest2020 {
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 18 extra: " + solution + " [" + time + "ms]");
     }
+
+    //    @Test
+//    public void day19_monsterMessages() throws Exception {
+//        List<String> example = asList(("0: 4 1 5\n" +
+//                "1: 2 3 | 3 2\n" +
+//                "2: 4 4 | 5 5\n" +
+//                "3: 4 5 | 5 4\n" +
+//                "4: \"a\"\n" +
+//                "5: \"b\"\n" +
+//                "\n" +
+//                "ababbb\n" +
+//                "bababa\n" +
+//                "abbbab\n" +
+//                "aaabbb\n" +
+//                "aaaabbb").split("\n"));
+//        List<String> input = Util.getContent("/s2020/day18_expressions.txt");
+
+//        Assertions.assertEquals(112, Day19MonsterMessages.getNumberOfMessagesMatchingRules(example));
+
+//        long time = System.currentTimeMillis();
+//        int solution = Day17ConwayCubes.findNumberOfActiveCubes(input, 6);
+//        Assertions.assertEquals(237, solution);
+//        time = System.currentTimeMillis() - time;
+//        System.out.println("DAY 19: " + solution + " [" + time + "ms]");
+//
+//        Assertions.assertEquals(848, Day17ConwayCubes.findNumberOfActiveCubesInHyperDimension(example, 6));
+//
+//        time = System.currentTimeMillis();
+//        solution = Day17ConwayCubes.findNumberOfActiveCubesInHyperDimension(input, 6);
+//        Assertions.assertEquals(2448, solution);
+//        time = System.currentTimeMillis() - time;
+//        System.out.println("DAY 19extra: " + solution + " [" + time + "ms]");
+//    }
 }
