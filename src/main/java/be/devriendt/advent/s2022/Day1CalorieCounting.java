@@ -1,4 +1,4 @@
-package be.devriendt.advent.s2021;
+package be.devriendt.advent.s2022;
 
 import be.devriendt.advent.Util;
 
