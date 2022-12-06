@@ -81,4 +81,32 @@ public class AdventCodeTest2022 {
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 3 extra: " + solution + " [" + time + "ms]");
     }
+
+    @Test
+    public void day4_campCleanup() throws Exception {
+        List<String> example = List.of("2-4,6-8",
+                "2-3,4-5",
+                "5-7,7-9",
+                "2-8,3-7",
+                "6-6,4-6",
+                "2-6,4-8");
+
+        String input = "/s2022/day4_cleanup.txt";
+
+        Assertions.assertEquals(2, Day4CampCleanup.findNumberOfFullyContainedSections(example));
+
+        long time = System.currentTimeMillis();
+        int solution = Day4CampCleanup.findNumberOfFullyContainedSections(Util.getContent(input));
+        Assertions.assertEquals(513, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 4: " + solution + " [" + time + "ms]");
+
+        Assertions.assertEquals(4, Day4CampCleanup.findNumberOfPartiallyContainedSections(example));
+
+        time = System.currentTimeMillis();
+        solution = Day4CampCleanup.findNumberOfPartiallyContainedSections(Util.getContent(input));
+        Assertions.assertEquals(878, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 4 extra: " + solution + " [" + time + "ms]");
+    }
 }
