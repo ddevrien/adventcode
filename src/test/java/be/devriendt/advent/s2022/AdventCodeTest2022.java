@@ -141,4 +141,39 @@ public class AdventCodeTest2022 {
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 5 extra: " + solution + " [" + time + "ms]");
     }
+
+    @Test
+    public void day6_tuningTrouble() throws Exception {
+        String example = "mjqjpqmgbljsphdztnvjfqwrcgsmlb";
+        String example2 = "bvwbjplbgvbhsrlpgdmjqwftvncz";
+        String example3 = "nppdvjthqldpwncqszvftbrmjlhg";
+        String example4 = "nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg";
+        String example5 = "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw";
+
+        String input = "/s2022/day6_datastream.txt";
+
+        Assertions.assertEquals(7, Day6TuningTrouble.findMarker(example));
+        Assertions.assertEquals(5, Day6TuningTrouble.findMarker(example2));
+        Assertions.assertEquals(6, Day6TuningTrouble.findMarker(example3));
+        Assertions.assertEquals(10, Day6TuningTrouble.findMarker(example4));
+        Assertions.assertEquals(11, Day6TuningTrouble.findMarker(example5));
+
+        long time = System.currentTimeMillis();
+        int solution = Day6TuningTrouble.findMarker(Util.getContentSingleLine(input));
+        Assertions.assertEquals(1707, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 6: " + solution + " [" + time + "ms]");
+
+        Assertions.assertEquals(19, Day6TuningTrouble.findMarker2(example));
+        Assertions.assertEquals(23, Day6TuningTrouble.findMarker2(example2));
+        Assertions.assertEquals(23, Day6TuningTrouble.findMarker2(example3));
+        Assertions.assertEquals(29, Day6TuningTrouble.findMarker2(example4));
+        Assertions.assertEquals(26, Day6TuningTrouble.findMarker2(example5));
+
+        time = System.currentTimeMillis();
+        solution = Day6TuningTrouble.findMarker2(Util.getContentSingleLine(input));
+        Assertions.assertEquals(3697, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 6 extra: " + solution + " [" + time + "ms]");
+    }
 }

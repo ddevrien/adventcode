@@ -10,10 +10,10 @@ import java.security.NoSuchAlgorithmException;
 public class Day4md5 {
 
     public static int findLowestPossibleSolution(String input, int leadingZeroes) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+        MessageDigest md5 = MessageDigest.getInstance("MD5");
         int number = 0;
 
         while (true) {
-            MessageDigest md5 = MessageDigest.getInstance("MD5");
             md5.update((input + number).getBytes("UTF-8"));
             byte[] hash = md5.digest();
 

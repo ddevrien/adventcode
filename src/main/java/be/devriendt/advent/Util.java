@@ -26,6 +26,10 @@ public class Util {
                 .collect(Collectors.toList());
     }
 
+    public static String getContentSingleLine(String resourcePath) throws URISyntaxException, IOException {
+        return getLinesStream(resourcePath).findFirst().get();
+    }
+
     private static Stream<String> getLinesStream(String resourcePath) throws IOException, URISyntaxException {
         return Files.lines(Paths.get(Util.class.getResource(resourcePath).toURI()));
     }
