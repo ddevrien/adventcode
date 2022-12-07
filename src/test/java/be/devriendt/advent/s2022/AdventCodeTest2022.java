@@ -176,4 +176,49 @@ public class AdventCodeTest2022 {
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 6 extra: " + solution + " [" + time + "ms]");
     }
+
+    @Test
+    public void day7_noSpaceLeftOnDevice() throws Exception {
+        List<String> example = List.of("$ cd /",
+                "$ ls",
+                "dir a",
+                "14848514 b.txt",
+                "8504156 c.dat",
+                "dir d",
+                "$ cd a",
+                "$ ls",
+                "dir e",
+                "29116 f",
+                "2557 g",
+                "62596 h.lst",
+                "$ cd e",
+                "$ ls",
+                "584 i",
+                "$ cd ..",
+                "$ cd ..",
+                "$ cd d",
+                "$ ls",
+                "4060174 j",
+                "8033020 d.log",
+                "5626152 d.ext",
+                "7214296 k");
+
+        String input = "/s2022/day7_terminal.txt";
+
+        Assertions.assertEquals(95437, Day7NoSpaceLeftOnDevice.findTotalSizeOfDirectoriesToDelete(example));
+
+        long time = System.currentTimeMillis();
+        int solution = Day7NoSpaceLeftOnDevice.findTotalSizeOfDirectoriesToDelete(Util.getContent(input));
+        Assertions.assertEquals(1454188, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 7: " + solution + " [" + time + "ms]");
+
+        Assertions.assertEquals(24933642, Day7NoSpaceLeftOnDevice.findDirectoryToDelete(example));
+
+        time = System.currentTimeMillis();
+        solution = Day7NoSpaceLeftOnDevice.findDirectoryToDelete(Util.getContent(input));
+        Assertions.assertEquals(4183246, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 7 extra: " + solution + " [" + time + "ms]");
+    }
 }
