@@ -109,4 +109,36 @@ public class AdventCodeTest2022 {
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 4 extra: " + solution + " [" + time + "ms]");
     }
+
+    @Test
+    public void day5_supplyStacks() throws Exception {
+        List<String> example = List.of(
+                "    [D]    ",
+                "[N] [C]    ",
+                "[Z] [M] [P]",
+                " 1   2   3 ",
+                "",
+                "move 1 from 2 to 1",
+                "move 3 from 1 to 3",
+                "move 2 from 2 to 1",
+                "move 1 from 1 to 2");
+
+        String input = "/s2022/day5_stacks.txt";
+
+        Assertions.assertEquals("CMZ", Day5SupplyStacks.findTopOfStackCrates(example));
+
+        long time = System.currentTimeMillis();
+        String solution = Day5SupplyStacks.findTopOfStackCrates(Util.getContent(input));
+        Assertions.assertEquals("BZLVHBWQF", solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 5: " + solution + " [" + time + "ms]");
+
+        Assertions.assertEquals("MCD", Day5SupplyStacks.findTopOfStackCrates(example, true));
+
+        time = System.currentTimeMillis();
+        solution = Day5SupplyStacks.findTopOfStackCrates(Util.getContent(input), true);
+        Assertions.assertEquals("TDGJQTZSL", solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 5 extra: " + solution + " [" + time + "ms]");
+    }
 }
