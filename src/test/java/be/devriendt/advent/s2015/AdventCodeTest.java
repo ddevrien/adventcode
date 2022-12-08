@@ -1,5 +1,6 @@
 package be.devriendt.advent.s2015;
 
+import be.devriendt.advent.Util;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -234,13 +235,29 @@ public class AdventCodeTest {
         System.out.println("DAY 8 extra: " + solution + " [" + time + "ms]");
     }
 
-//    @Test
-//    public void day9_tsp() throws Exception {
-//        List<String> routes = new ArrayList<>();
-//        routes.add("London to Dublin = 464");
-//        routes.add("London to Belfast = 518");
-//        routes.add("Dublin to Belfast = 141");
-//
-//        Assertions.assertEquals(2, Day9TSP.shortestRoute(routes));
-//    }
+    @Test
+    public void day9_tsp() throws Exception {
+        List<String> example = List.of(
+                "London to Dublin = 464",
+                "London to Belfast = 518",
+                "Dublin to Belfast = 141");
+
+        String input = "/s2015/day9_routes.txt";
+
+        Assertions.assertEquals(605, Day9TSP.findShortestRoute(example));
+
+        long time = System.currentTimeMillis();
+        int solution = Day9TSP.findShortestRoute(Util.getContent(input));
+        Assertions.assertEquals(117, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 9: " + solution + " [" + time + "ms]");
+
+        Assertions.assertEquals(982, Day9TSP.findLongestRoute(example));
+
+        time = System.currentTimeMillis();
+        solution = Day9TSP.findLongestRoute(Util.getContent(input));
+        Assertions.assertEquals(909, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 9 extra: " + solution + " [" + time + "ms]");
+    }
 }
