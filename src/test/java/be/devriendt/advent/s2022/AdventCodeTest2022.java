@@ -221,4 +221,32 @@ public class AdventCodeTest2022 {
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 7 extra: " + solution + " [" + time + "ms]");
     }
+
+    @Test
+    public void day8_treetopTreeHouse() throws Exception {
+        List<String> example = List.of(
+                "30373",
+                "25512",
+                "65332",
+                "33549",
+                "35390");
+
+        String input = "/s2022/day8_forest.txt";
+
+        Assertions.assertEquals(21, Day8TreetopTreeHouse.getNumberOfVisibleTrees(example));
+
+        long time = System.currentTimeMillis();
+        int solution = Day8TreetopTreeHouse.getNumberOfVisibleTrees(Util.getContent(input));
+        Assertions.assertEquals(1823, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 8: " + solution + " [" + time + "ms]");
+
+        Assertions.assertEquals(8, Day8TreetopTreeHouse.findBestTree(example));
+
+        time = System.currentTimeMillis();
+        solution = Day8TreetopTreeHouse.findBestTree(Util.getContent(input));
+        Assertions.assertEquals(211680, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 8 extra: " + solution + " [" + time + "ms]");
+    }
 }
