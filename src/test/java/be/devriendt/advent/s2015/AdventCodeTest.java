@@ -260,4 +260,24 @@ public class AdventCodeTest {
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 9 extra: " + solution + " [" + time + "ms]");
     }
+
+    @Test
+    public void day10_lookAndSay() {
+        String example = "1";
+        String input = "3113322113";
+
+        Assertions.assertEquals("312211", Day10LookAndSay.execute(example, 5));
+
+        long time = System.currentTimeMillis();
+        int solution = Day10LookAndSay.execute(input, 40).length();
+        Assertions.assertEquals(329356, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 10: " + solution + " [" + time + "ms]");
+
+        time = System.currentTimeMillis();
+        solution = Day10LookAndSay.execute(input, 50).length();
+        Assertions.assertEquals(4666278, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 10 extra: " + solution + " [" + time + "ms]");
+    }
 }
