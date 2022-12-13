@@ -290,4 +290,43 @@ public class AdventCodeTest2022 {
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 9 extra: " + solution + " [" + time + "ms]");
     }
+
+    @Test
+    public void day10_cathodeRayTube() throws Exception {
+        List<String> example = List.of(
+                "noop",
+                "addx 3",
+                "addx -5");
+        String example2 = "/s2022/day10_instructions_example.txt";
+
+        String input = "/s2022/day10_instructions.txt";
+
+        Assertions.assertEquals(0, Day10CRT.findSignalStrengthSum(example));
+        Assertions.assertEquals(13140, Day10CRT.findSignalStrengthSum(Util.getContent(example2)));
+
+        long time = System.currentTimeMillis();
+        int solution = Day10CRT.findSignalStrengthSum(Util.getContent(input));
+        Assertions.assertEquals(15260, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 1O: " + solution + " [" + time + "ms]");
+
+        Assertions.assertEquals(
+                "##..##..##..##..##..##..##..##..##..##..\n" +
+                        "###...###...###...###...###...###...###.\n" +
+                        "####....####....####....####....####....\n" +
+                        "#####.....#####.....#####.....#####.....\n" +
+                        "######......######......######......####\n" +
+                        "#######.......#######.......#######.....", Day10CRT.renderScreen(Util.getContent(example2)));
+
+        time = System.currentTimeMillis();
+        Assertions.assertEquals(
+                "###...##..#..#.####..##..#....#..#..##..\n" +
+                        "#..#.#..#.#..#.#....#..#.#....#..#.#..#.\n" +
+                        "#..#.#....####.###..#....#....#..#.#....\n" +
+                        "###..#.##.#..#.#....#.##.#....#..#.#.##.\n" +
+                        "#....#..#.#..#.#....#..#.#....#..#.#..#.\n" +
+                        "#.....###.#..#.#.....###.####..##...###.", Day10CRT.renderScreen(Util.getContent(input)));
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 10 extra: " + solution + " [" + time + "ms]");
+    }
 }
