@@ -249,4 +249,45 @@ public class AdventCodeTest2022 {
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 8 extra: " + solution + " [" + time + "ms]");
     }
+
+    @Test
+    public void day9_ropeBridge() throws Exception {
+        List<String> example = List.of(
+                "R 4",
+                "U 4",
+                "L 3",
+                "D 1",
+                "R 4",
+                "D 1",
+                "L 5",
+                "R 2");
+
+        String input = "/s2022/day9_moves.txt";
+
+        Assertions.assertEquals(13, Day9RopeBridge.findNumberOfVisitedLocations(2, example));
+
+        long time = System.currentTimeMillis();
+        int solution = Day9RopeBridge.findNumberOfVisitedLocations(2, Util.getContent(input));
+        Assertions.assertEquals(6209, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 9: " + solution + " [" + time + "ms]");
+
+        List<String> example2 = List.of(
+                "R 5",
+                "U 8",
+                "L 8",
+                "D 3",
+                "R 17",
+                "D 10",
+                "L 25",
+                "U 20");
+        Assertions.assertEquals(1, Day9RopeBridge.findNumberOfVisitedLocations(10, example));
+        Assertions.assertEquals(36, Day9RopeBridge.findNumberOfVisitedLocations(10, example2));
+
+        time = System.currentTimeMillis();
+        solution = Day9RopeBridge.findNumberOfVisitedLocations(10, Util.getContent(input));
+        Assertions.assertEquals(2460, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 9 extra: " + solution + " [" + time + "ms]");
+    }
 }
