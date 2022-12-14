@@ -329,4 +329,54 @@ public class AdventCodeTest2022 {
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 10 extra: " + solution + " [" + time + "ms]");
     }
+
+    @Test
+    public void day11_monkeyInTheMiddle() throws Exception {
+        List<String> example = List.of(
+                "Monkey 0:",
+                "  Starting items: 79, 98",
+                "  Operation: new = old * 19",
+                "  Test: divisible by 23",
+                "    If true: throw to monkey 2",
+                "    If false: throw to monkey 3",
+                "",
+                "Monkey 1:",
+                "  Starting items: 54, 65, 75, 74",
+                "  Operation: new = old + 6",
+                "  Test: divisible by 19",
+                "    If true: throw to monkey 2",
+                "    If false: throw to monkey 0",
+                "",
+                "Monkey 2:",
+                "  Starting items: 79, 60, 97",
+                "  Operation: new = old * old",
+                "  Test: divisible by 13",
+                "    If true: throw to monkey 1",
+                "    If false: throw to monkey 3",
+                "",
+                "Monkey 3:",
+                "  Starting items: 74",
+                "  Operation: new = old + 3",
+                "  Test: divisible by 17",
+                "    If true: throw to monkey 0",
+                "    If false: throw to monkey 1");
+
+        String input = "/s2022/day11_monkeys.txt";
+
+        Assertions.assertEquals(10605, Day11MonkeyInTheMiddle.findMonkeyBusiness(example, 20, 3));
+
+        long time = System.currentTimeMillis();
+        long solution = Day11MonkeyInTheMiddle.findMonkeyBusiness(Util.getContent(input), 20, 3);
+        Assertions.assertEquals(57348, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 11: " + solution + " [" + time + "ms]");
+
+        Assertions.assertEquals(2713310158L, Day11MonkeyInTheMiddle.findMonkeyBusiness(example, 10_000, 1));
+
+        time = System.currentTimeMillis();
+        solution = Day11MonkeyInTheMiddle.findMonkeyBusiness(Util.getContent(input), 10_000, 1);
+        Assertions.assertEquals(14106266886L, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 11 extra: " + solution + " [" + time + "ms]");
+    }
 }
