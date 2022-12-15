@@ -407,4 +407,50 @@ public class AdventCodeTest2022 {
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 12 extra: " + solution + " [" + time + "ms]");
     }
+
+    @Test
+    public void day13_distressSignal() throws Exception {
+        List<String> example = List.of(
+                "[1,1,3,1,1]",
+                "[1,1,5,1,1]",
+                "",
+                "[[1],[2,3,4]]",
+                "[[1],4]",
+                "",
+                "[9]",
+                "[[8,7,6]]",
+                "",
+                "[[4,4],4,4]",
+                "[[4,4],4,4,4]",
+                "",
+                "[7,7,7,7]",
+                "[7,7,7]",
+                "",
+                "[]",
+                "[3]",
+                "",
+                "[[[]]]",
+                "[[]]",
+                "",
+                "[1,[2,[3,[4,[5,6,7]]]],8,9]",
+                "[1,[2,[3,[4,[5,6,0]]]],8,9]");
+
+        String input = "/s2022/day13_packets.txt";
+
+        Assertions.assertEquals(13, Day13DistressSignal.findSumOfPacketPairsIndicesInRightOrder(example));
+
+        long time = System.currentTimeMillis();
+        int solution = Day13DistressSignal.findSumOfPacketPairsIndicesInRightOrder(Util.getContent(input));
+        Assertions.assertEquals(6478, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 13: " + solution + " [" + time + "ms]");
+
+        Assertions.assertEquals(140, Day13DistressSignal.sortPacketsInRightOrder(example));
+
+        time = System.currentTimeMillis();
+        solution = Day13DistressSignal.sortPacketsInRightOrder(Util.getContent(input));
+        Assertions.assertEquals(21922, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 13 extra: " + solution + " [" + time + "ms]");
+    }
 }
