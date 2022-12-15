@@ -379,4 +379,32 @@ public class AdventCodeTest2022 {
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 11 extra: " + solution + " [" + time + "ms]");
     }
+
+    @Test
+    public void day12_hillClimbingAlgorithm() throws Exception {
+        List<String> example = List.of(
+                "Sabqponm",
+                "abcryxxl",
+                "accszExk",
+                "acctuvwj",
+                "abdefghi");
+
+        String input = "/s2022/day12_map.txt";
+
+        Assertions.assertEquals(31, Day12HillClimbing.findNrOfStepsToDestination(example));
+
+        long time = System.currentTimeMillis();
+        int solution = Day12HillClimbing.findNrOfStepsToDestination(Util.getContent(input));
+        Assertions.assertEquals(370, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 12: " + solution + " [" + time + "ms]");
+
+        Assertions.assertEquals(29, Day12HillClimbing.findOptimalStepsToDestination(example));
+
+        time = System.currentTimeMillis();
+        solution = Day12HillClimbing.findOptimalStepsToDestination(Util.getContent(input));
+        Assertions.assertEquals(363, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 12 extra: " + solution + " [" + time + "ms]");
+    }
 }
