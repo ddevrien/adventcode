@@ -453,4 +453,29 @@ public class AdventCodeTest2022 {
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 13 extra: " + solution + " [" + time + "ms]");
     }
+
+    @Test
+    public void day14_regolithReservoir() throws Exception {
+        List<String> example = List.of(
+                "498,4 -> 498,6 -> 496,6",
+                "503,4 -> 502,4 -> 502,9 -> 494,9");
+
+        String input = "/s2022/day14_cave.txt";
+
+        Assertions.assertEquals(24, Day14RegolithReservoir.findTotalSandUnits(example, true));
+
+        long time = System.currentTimeMillis();
+        int solution = Day14RegolithReservoir.findTotalSandUnits(Util.getContent(input), true);
+        Assertions.assertEquals(873, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 14: " + solution + " [" + time + "ms]");
+
+        Assertions.assertEquals(93, Day14RegolithReservoir.findTotalSandUnits(example, false));
+
+        time = System.currentTimeMillis();
+        solution = Day14RegolithReservoir.findTotalSandUnits(Util.getContent(input), false);
+        Assertions.assertEquals(24813, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 14 extra: " + solution + " [" + time + "ms]");
+    }
 }
