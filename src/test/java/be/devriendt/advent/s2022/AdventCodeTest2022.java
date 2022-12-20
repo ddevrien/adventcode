@@ -478,4 +478,41 @@ public class AdventCodeTest2022 {
         time = System.currentTimeMillis() - time;
         System.out.println("DAY 14 extra: " + solution + " [" + time + "ms]");
     }
+
+    @Test
+    public void day15_beaconExclusionZone() throws Exception {
+        List<String> example = List.of(
+                "Sensor at x=2, y=18: closest beacon is at x=-2, y=15",
+                        "Sensor at x=9, y=16: closest beacon is at x=10, y=16",
+                        "Sensor at x=13, y=2: closest beacon is at x=15, y=3",
+                        "Sensor at x=12, y=14: closest beacon is at x=10, y=16",
+                        "Sensor at x=10, y=20: closest beacon is at x=10, y=16",
+                        "Sensor at x=14, y=17: closest beacon is at x=10, y=16",
+                        "Sensor at x=8, y=7: closest beacon is at x=2, y=10",
+                        "Sensor at x=2, y=0: closest beacon is at x=2, y=10",
+                        "Sensor at x=0, y=11: closest beacon is at x=2, y=10",
+                        "Sensor at x=20, y=14: closest beacon is at x=25, y=17",
+                        "Sensor at x=17, y=20: closest beacon is at x=21, y=22",
+                        "Sensor at x=16, y=7: closest beacon is at x=15, y=3",
+                        "Sensor at x=14, y=3: closest beacon is at x=15, y=3",
+                        "Sensor at x=20, y=1: closest beacon is at x=15, y=3");
+
+        String input = "/s2022/day15_sensors.txt";
+
+        Assertions.assertEquals(26, Day15BeaconExclusionZone.findNrOfPositionsWhereBeaconCannotBePresent(example, 10));
+
+        long time = System.currentTimeMillis();
+        long solution = Day15BeaconExclusionZone.findNrOfPositionsWhereBeaconCannotBePresent(Util.getContent(input), 2_000_000);
+        Assertions.assertEquals(5525990, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 15: " + solution + " [" + time + "ms]");
+
+        Assertions.assertEquals(56000011, Day15BeaconExclusionZone.findBeaconPosition(example, 0, 20));
+
+        time = System.currentTimeMillis();
+        solution = Day15BeaconExclusionZone.findBeaconPosition(Util.getContent(input), 0, 4_000_000);
+        Assertions.assertEquals(11756174628223L, solution);
+        time = System.currentTimeMillis() - time;
+        System.out.println("DAY 15 extra: " + solution + " [" + time + "ms]");
+    }
 }
